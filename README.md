@@ -16,7 +16,7 @@ This is a small PHP application developed as a test task that implements basic o
 /project-root
 /src            - Source code of the application
 index.php     - Entry point of the application
-docker compose.yml - Docker orchestration file
+docker-compose.yml - Docker orchestration file
 nginx.conf      - NGINX server configuration
 Dockerfile      - Dockerfile for PHP-FPM container
 
@@ -77,6 +77,7 @@ curl -X POST http://localhost:8080 -d "action=create_account&account_number=1234
 ###Transfer Funds
 
 To transfer funds between accounts, send a POST request:
+
 ```bash
 curl -X POST http://localhost:8080 -d "action=transfer&account_from=1234567890&account_to=0987654321&amount=500.00"
 ```
