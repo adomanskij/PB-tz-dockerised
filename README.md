@@ -41,8 +41,18 @@ Dockerfile      - Dockerfile for PHP-FPM container
     ```bash
     cp .env.example .env
     ```
+    
+2. **Install Composer Dependencies**
 
-3. **Start Docker containers**
+    If using Composer for dependency management, install the packages in the PHP container:
+
+    ```bash
+    cd src 
+    composer install
+    cd ..
+    ```
+    
+4. **Start Docker containers**
 
     Use Docker Compose to build and start the services:
 
@@ -50,11 +60,11 @@ Dockerfile      - Dockerfile for PHP-FPM container
     docker compose up -d
     ```
 
-4. **Application Access**
+5. **Application Access**
 
     The application will be accessible at `http://localhost:8080`.
 
-5. **Database Setup**
+6. **Database Setup**
 
     The PostgreSQL database will be automatically created with the following credentials:
 
@@ -112,17 +122,8 @@ Place all your PHP code in the `src` directory. The main entry point is `index.p
 
 ## Running Tests
 
-1. **Install Composer Dependencies**
 
-    If using Composer for dependency management, install the packages in the PHP container:
-
-    ```bash
-    cd src 
-    composer install
-    cd ..
-    ```
-
-2. **Run PHPUnit Tests**
+ **Run PHPUnit Tests**
 
     Execute PHPUnit tests inside the PHP container:
 
