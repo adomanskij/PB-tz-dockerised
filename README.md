@@ -30,7 +30,7 @@ Dockerfile      - Dockerfile for PHP-FPM container
 1. **Clone the repository**
 
     ```bash
-    git clone <repository_url>
+    git clone git@github.com:adomanskij/PB-tz-dockerised.git
     cd project-root
     ```
 
