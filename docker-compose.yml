@@ -1,0 +1,47 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: php:8.1-fpm
+    container_name: php_app
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "9000:9000"
+    depends_on:
+      - db
+      
+  composer:
+    image: composer:2.0
+    container_name: composer_app
+    working_dir: /var/www/html/src
+    volumes:
+      - .:/var/www/html
+
+  webserver:
+    image: nginx:alpine
+    container_name: nginx_web
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "8080:80"
+    depends_on:
+      - app
+
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: bank_accounts
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./src/database/migrations:/docker-entrypoint-initdb.d  
+
+volumes:
+  postgres_data:
