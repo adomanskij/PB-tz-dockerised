@@ -8,6 +8,7 @@ This is a small PHP application developed as a test task that implements basic o
 - Retrieve information about a bank account (balance and other details).
 - Transfer funds between accounts with validation of sufficient balance.
 - Retrieve transaction history for a given account.
+- Authentication with JWT tokens.
 - Built with clean architecture patterns: Repository, Service, and Factory.
 - Optimized SQL queries for handling large datasets.
 - Dockerized for easy setup and development.
@@ -75,6 +76,14 @@ Dockerfile      - Dockerfile for PHP-FPM container
     Make sure to adjust the credentials if necessary in `docker compose.yml`.
 
 ## API Requests
+
+### Get Token
+
+To obtain a JWT token, send a POST request:
+
+```bash
+curl -X POST http://localhost:8080 -d "action=get_token"
+```
 
 ### Create Account
 
